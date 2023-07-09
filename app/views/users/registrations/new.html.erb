@@ -1,0 +1,45 @@
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-md-5 mx-auto">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "users/shared/error_messages", resource: resource %>
+        <div class="form-outline mb-4">
+          <%= f.label :name, class: "form-label" %><br />
+          <%= f.text_field :name, autofocus: true, class: "form-control" %>
+        </div>
+
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+          <%= f.label :email, class: "form-label", for: "form2Example1" %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "form2Example1", class: "form-control" %>
+        </div>
+
+        <%= f.fields_for :school_student do |s|%>
+          <div class="form-outline mb-4">
+            <%= s.label :school, class: "form-label", for: "form2Example1" %><br />
+            <%= s.select :school_id, options_from_collection_for_select(@schools, :id, :name), { :prompt => "Select School" }, { class: "form-control form-select" } %>
+          </div>
+        <% end %>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+          <%= f.label :password, class: "form-label", for: "form2Example2" %><br />
+          <%= f.password_field :password, autocomplete: "current-password", id: "form2Example2", class: "form-control" %>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+          <%= f.label :password_confirmation, class: "form-label", for: "form2Example2" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "current-password", id: "form2Example2", class: "form-control" %>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4" style="width: 100%">Register</button>
+        <!-- Register buttons -->
+        <div class="text-center">
+          <%= link_to "Log in", new_session_path(resource_name) %><br />
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

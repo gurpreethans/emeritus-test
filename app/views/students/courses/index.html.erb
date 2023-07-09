@@ -1,0 +1,33 @@
+<div class="col py-3">
+  <div class="row">
+    <div class="col-md-9 mx-2">
+      <h3>Courses</h3>
+    </div>
+    <hr>
+  </div>
+  <div class="row">
+    <%= render 'shared/flash' %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @courses.each do |course| %>
+          <tr>
+            <th scope="row"><%= course.id %></th>
+            <td><%= course.name %></td>
+            <td><%= course.description %></td>
+            <td>
+              <%= link_to 'View Batches', students_course_batches_path(course), class: 'btn btn-primary' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,9 +1,28 @@
-<h1>New enrollment</h1>
+<div class="container py-3">
+  <div class="row">
+    <h3>Add Students</h3>
+    <hr>
+  </div>
+  <div class="row">
+    <div class="col-md-5 mx-auto">
+      <%= render 'shared/flash' %>
+      <%= form_for(@enrollment, url: my_school_course_batch_enrollments_path) do |f| %>
+        <div class="form-outline mb-4">
+          <%= f.label :course, class: "form-label", for: "form2Example1" %> -
+          <%= @course.name %>
+        </div>
+        <div class="form-outline mb-4">
+          <%= f.label :batch, class: "form-label", for: "form2Example1" %> -
+          <%= @batch.name %>
+        </div>
+        <div class="form-outline mb-4">
+          <%= f.label :students, class: "form-label", for: "form2Example1" %><br />
+          <%= select_tag :student_ids, options_from_collection_for_select(@students, :id, :name), { :prompt => "Select Students", multiple: true , class: "form-control form-select" } %>
+        </div>
 
-<%= render "form", enrollment: @enrollment %>
-
-<br>
-
-<div>
-  <%= link_to "Back to enrollments", enrollments_path %>
+        <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+        <%= link_to 'Cancel', my_school_course_batch_enrollments_path, class: 'btn btn-primary btn-block mb-4' %>
+      <% end %>
+    </div>
+  </div>
 </div>

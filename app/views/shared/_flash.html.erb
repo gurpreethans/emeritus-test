@@ -1,0 +1,5 @@
+<div id="error_explanation" class="flash-messages" data-turbo-cache="false">
+  <% flash.each do |name, msg| -%>
+    <%= content_tag :div, raw(msg.to_s), class: "alert alert-#{FLASH_MAP[name.to_sym]}" -%>
+  <% end %>
+</div>

@@ -1,0 +1,52 @@
+<div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+  <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+      <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+          <span class="fs-5 d-none d-sm-inline">School Management</span>
+      </a>
+      <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+        <li class="nav-item">
+          <a href="<%= root_path %>" class="nav-link align-middle px-0">
+            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+          </a>
+        </li>
+
+        <% if current_user.student? %>
+          <li class="nav-item">
+            <a href="<%= students_courses_path %>" class="nav-link align-middle px-0">
+              <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Courses</span>
+            </a>
+          </li>
+        <% end %>
+
+        <% if current_user.admin? %>
+          <li class="nav-item">
+            <a href="<%= schools_path %>" class="nav-link align-middle px-0">
+              <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Schools</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="<%= school_admins_path %>" class="nav-link align-middle px-0">
+              <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">School Admins</span>
+            </a>
+          </li>
+        <% end %>
+
+        <% if current_user.school_admin? %>
+          <li class="nav-item">
+            <a href="<%= my_schools_path %>" class="nav-link align-middle px-0">
+              <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Schools</span>
+            </a>
+          </li>
+        <% end %>
+
+        <li class="nav-item">
+          <%= link_to destroy_user_session_path, method: :delete, class: 'av-link align-middle px-0' do %>
+            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Logout</span>
+          <% end %>
+        </li>
+
+      </ul>
+      <hr>
+  </div>
+</div>

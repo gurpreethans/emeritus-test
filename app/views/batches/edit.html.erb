@@ -1,0 +1,20 @@
+<div class="container py-3">
+  <div class="row">
+    <h3>Edit Course</h3>
+    <hr>
+  </div>
+  <div class="row">
+    <div class="col-md-5 mx-auto">
+      <%= render 'shared/flash' %>
+      <%= form_for(@batch, url: my_school_course_batch_path) do |f| %>
+        <div class="form-outline mb-4">
+          <%= f.label :name, class: "form-label", for: "form2Example1" %><br />
+          <%= f.text_field :name, id: "form2Example1", class: "form-control" %>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+        <%= link_to 'Cancel', my_school_course_batches_path, class: 'btn btn-primary btn-block mb-4' %>
+      <% end %>
+    </div>
+  </div>
+</div>
