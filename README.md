@@ -43,6 +43,7 @@ rails s
 - Improve directory structure
 - Integrate parallet testing for performance
 - Integrate devise invitable and letter opener web gem for mails
+- Add breadcrumbs to the pages
 
 ## Test Credentials
 - Admin - admin@gmail.com / Hello123
