@@ -1,22 +1,49 @@
-# Welcome to the assesment test
-### DO NOT FORK THIS PROJECT
+# School Management App
 
-### We have 3 objects:
-* A User that can either be a student (if it only learns courses), a teacher (if it only teaches)
-or a student_teacher if it does both things
+App has three type of roles `Admin`, `School Admin` and `Student`. All three roles have different controls and limitations.
 
-* A Program that represents the subject of a course (Eg: Calculus)
+## Features
 
-* An enrollment that represents the student and the teacher that are in a certain course 
+- Admins have full control over the system and can create schools and SchoolAdmins.
+- School Admins can update information about the school.
+- School Admins can create course, batches and enroll students to the batches.
+- School Admins can approve or deny enrolment requests made by students
+- Students can raise a request to enrol in a batch.
+- Students from the same batch can see their classmates and their progress
 
-### Before coming to the first tecnical meeting you:
+## Tech Stack
 
-* CAN NOT CHANGE THE TESTS or MIGRATIONS
+- Rails 7
+- Ruby 2.7.5
+- Sqlite 3
+- Devise
+- jQuery
+- Bootstrap
+- Multi JSON
+- Active Record Import
 
-* CAN NOT ADD NEW MODELS, CONTROLLERS or MIGRATIONS
 
-* HAVE ALL RSPEC TESTS PASSING, without changing them (you can add more tests if you want)
 
-* Have a basic idea of how the code works
+## Installation and Setup
 
-* Understand how models should interact
+```sh
+git clone git@github.com:gurpreethans/emeritus-test.git
+cd emeritus-test
+Install and Setup Ruby 2.7.5 - Rbenv or RVM
+gem install bundler
+bundle install
+rails db:setup
+rails s
+```
+
+## To Do List
+- Add pagination to the listing page and API
+- Integrate devise-jwt for API authentication
+- Write test cases
+- Improve directory structure
+- Integrate parallet testing for performance
+- Integrate devise invitable and letter opener web gem for mails
+
+## Test Credentials
+- Admin - admin@gmail.com / Hello123
+- School Admin Password - Hello123
