@@ -1,11 +1,10 @@
-class EmailFormatValidator < ActiveModel::EachValidator
+# frozen_string_literal: true
 
-  FORMAT = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+class EmailFormatValidator < ActiveModel::EachValidator
+  FORMAT = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i.freeze
 
   def validate_each(record, attribute, value)
-    unless value =~ FORMAT
-      record.errors.add(attribute, options[:message] || "is invalid")
-    end
+    record.errors.add(attribute, options[:message] || 'is invalid') unless value =~ FORMAT
 
     record
   end

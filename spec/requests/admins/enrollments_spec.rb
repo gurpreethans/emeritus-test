@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 RSpec.describe 'Enrollments', type: :request do
-  let(:admin) { FactoryBot.create(:admin)  }
+  let(:admin) { FactoryBot.create(:admin) }
 
   before do
     sign_in admin
@@ -32,7 +34,8 @@ RSpec.describe 'Enrollments', type: :request do
 
     context 'when approve enrollment request' do
       it 'approves student enrollment' do
-        get update_status_my_school_course_batch_enrollment_path(school, course, batch, enrollment, status: Enrollment::APPROVED), headers: headers
+        get update_status_my_school_course_batch_enrollment_path(school, course, batch, enrollment, status: Enrollment::APPROVED),
+            headers: headers
         expect(response.status).to eq(204)
         expect(enrollment.reload.status).to eq(Enrollment::APPROVED)
       end
@@ -40,7 +43,8 @@ RSpec.describe 'Enrollments', type: :request do
 
     context 'when reject enrollment request' do
       it 'rejects student enrollment' do
-        get update_status_my_school_course_batch_enrollment_path(school, course, batch, enrollment, status: Enrollment::REJECTED), headers: headers
+        get update_status_my_school_course_batch_enrollment_path(school, course, batch, enrollment, status: Enrollment::REJECTED),
+            headers: headers
         expect(response.status).to eq(204)
         expect(enrollment.reload.status).to eq(Enrollment::REJECTED)
       end
@@ -50,7 +54,8 @@ RSpec.describe 'Enrollments', type: :request do
   describe 'POST' do
     context 'when enrolling student' do
       it 'enrolls student' do
-        post my_school_course_batch_enrollments_path(school, course, batch), params: { student_ids: [student_2.id] }.to_json, headers: headers
+        post my_school_course_batch_enrollments_path(school, course, batch),
+             params: { student_ids: [student_2.id] }.to_json, headers: headers
         expect(response.status).to eq(201)
         data = JSON.parse response.body
         expect(data['message']).to eq('Students were successfully enrolled.')

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 RSpec.describe 'Schools', type: :request do
-  let(:admin) { FactoryBot.create(:admin)  }
+  let(:admin) { FactoryBot.create(:admin) }
 
   before do
     sign_in admin
@@ -31,7 +33,8 @@ RSpec.describe 'Schools', type: :request do
   describe 'POST' do
     context 'when creating school admin with invalid data' do
       it 'returns error' do
-        post school_admins_path, params: { user: { name: '', email: 'school@example.com', school_ids: school.id } }.to_json, headers: headers
+        post school_admins_path,
+             params: { user: { name: '', email: 'school@example.com', school_ids: school.id } }.to_json, headers: headers
         expect(response.status).to eq(422)
         data = JSON.parse response.body
         expect(data['name'].first).to eq("can't be blank")
@@ -40,16 +43,18 @@ RSpec.describe 'Schools', type: :request do
 
     context 'when creating duplicate school admin' do
       it 'returns error' do
-        post school_admins_path, params: { user: { name: 'Josh', email: school_admin.email, school_ids: school.id } }.to_json, headers: headers
+        post school_admins_path,
+             params: { user: { name: 'Josh', email: school_admin.email, school_ids: school.id } }.to_json, headers: headers
         expect(response.status).to eq(422)
         data = JSON.parse response.body
-        expect(data['email'].first).to eq("user already a school admin")
+        expect(data['email'].first).to eq('user already a school admin')
       end
     end
 
     context 'when creating school with valid data' do
       it 'create school' do
-        post school_admins_path, params: { user: { name: 'Josh', email: 'school@example.com', school_ids: school.id } }.to_json, headers: headers
+        post school_admins_path,
+             params: { user: { name: 'Josh', email: 'school@example.com', school_ids: school.id } }.to_json, headers: headers
         expect(response.status).to eq(201)
         data = JSON.parse response.body
         expect(data['name']).to eq('Josh')

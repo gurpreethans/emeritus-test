@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 RSpec.describe 'Courses', type: :request do
-  let(:school_admin_user) { FactoryBot.create(:school_admin_user)  }
+  let(:school_admin_user) { FactoryBot.create(:school_admin_user) }
 
   before do
     sign_in school_admin_user
