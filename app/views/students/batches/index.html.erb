@@ -1,0 +1,33 @@
+<div class="col py-3">
+  <div class="row">
+    <div class="col-md-9 mx-2">
+      <h3>Batches</h3>
+    </div>
+    <hr>
+  </div>
+  <div class="row">
+    <%= render 'shared/flash' %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @batches.each do |batch| %>
+          <tr>
+            <th scope="row"><%= batch.id %></th>
+            <td><%= batch.name %></td>
+            <td>
+              <%= link_to 'View Enrollments', students_course_batch_enrollments_path(@course, batch), class: 'btn btn-primary' %>
+              <%#= link_to 'Edit', edit_my_school_course_batch_path(@school, @course, batch), class: 'btn btn-primary' %>
+              <%#= link_to 'Destroy', my_school_course_batch_path(@school, @course, batch), class: 'btn btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

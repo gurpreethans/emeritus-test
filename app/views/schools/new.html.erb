@@ -1,0 +1,25 @@
+<div class="container py-3">
+  <div class="row">
+    <h3>Create Schools</h3>
+    <hr>
+  </div>
+  <div class="row">
+    <div class="col-md-5 mx-auto">
+      <%= render 'shared/flash' %>
+      <%= form_for(@school) do |f| %>
+        <div class="form-outline mb-4">
+          <%= f.label :name, class: "form-label", for: "form2Example1" %><br />
+          <%= f.text_field :name, id: "form2Example1", class: "form-control" %>
+        </div>
+
+        <div class="form-outline mb-4">
+          <%= f.label :description, class: "form-label", for: "form2Example2" %><br />
+          <%= f.text_area :description, id: "form2Example2", class: "form-control" %>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+        <%= link_to 'Cancel', schools_path, class: 'btn btn-primary btn-block mb-4' %>
+      <% end %>
+    </div>
+  </div>
+</div>

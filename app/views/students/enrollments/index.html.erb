@@ -1,0 +1,38 @@
+<div class="col py-3">
+  <div class="row">
+    <div class="col-md-9 mx-2">
+      <h3>Enrollments</h3>
+    </div>
+    <div class="col-md-2 mx-2">
+      <% if current_user.enrolled?(@batch) %>
+        <%= link_to 'Disenroll Yourself', disenroll_students_course_batch_enrollments_path(@course, @batch), class: 'btn btn-primary' %>
+      <% else %>
+        <%= link_to 'Enroll Yourself', enroll_students_course_batch_enrollments_path(@course, @batch), class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+    <hr>
+  </div>
+  <div class="row">
+    <%= render 'shared/flash' %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @enrollments.each do |enrollment| %>
+          <tr>
+            <th scope="row"><%= enrollment.id %></th>
+            <td><%= enrollment.name %></td>
+            <td><%= enrollment.email %></td>
+            <td><%= enrollment.status %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

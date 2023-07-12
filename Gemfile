@@ -42,6 +42,15 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+gem 'bootstrap', '~> 5.3.0.alpha3'
+
+gem "devise", "~> 4.9"
+
+gem 'jquery-rails'
+
+gem 'multi_json', '~> 1.15'
+
+gem 'activerecord-import'
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -53,6 +62,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'byebug', '~> 11.1.3'
   gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
+  gem 'factory_bot_rails'
 end
 
 group :development do

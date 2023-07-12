@@ -1,0 +1,30 @@
+<div class="container py-3">
+  <div class="row">
+    <h3>Create School Admin</h3>
+    <hr>
+  </div>
+  <div class="row">
+    <div class="col-md-5 mx-auto">
+      <%= render 'shared/flash' %>
+      <%= form_for(@user, url: school_admins_path) do |f| %>
+        <div class="form-outline mb-4">
+          <%= f.label :name, class: "form-label", for: "form2Example1" %><br />
+          <%= f.text_field :name, id: "form2Example1", class: "form-control" %>
+        </div>
+
+        <div class="form-outline mb-4">
+          <%= f.label :email, class: "form-label", for: "form2Example1" %><br />
+          <%= f.text_field :email, id: "form2Example1", class: "form-control" %>
+        </div>
+
+        <div class="form-outline mb-4">
+          <%= f.label :schools, class: "form-label", for: "form2Example2" %><br />
+          <%= f.select :school_ids, options_from_collection_for_select(School.all, :id, :name), { :prompt => "Select School" }, { class: "form-control form-select" } %>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+        <%= link_to 'Cancel', schools_path, class: 'btn btn-primary btn-block mb-4' %>
+      <% end %>
+    </div>
+  </div>
+</div>
