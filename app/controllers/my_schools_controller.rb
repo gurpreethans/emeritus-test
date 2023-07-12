@@ -43,7 +43,8 @@ class MySchoolsController < ApplicationController
   end
 
   def authorized_school_admin!
-    return if current_user.school_admin?
+    return if current_user.admin? || (current_user.school_admin? && SchoolAdmin.valid_admin(current_user.id,
+                                                                                            params[:my_school_id]))
 
     redirect_to root_path
   end

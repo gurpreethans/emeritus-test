@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module CoursePresenter
+module BatchPresenter
   def self.single(batch)
     {
       id: batch.id,

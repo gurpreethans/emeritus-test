@@ -38,7 +38,7 @@ class SchoolsController < ApplicationController
     form = SchoolForm.new(@school, school_params)
     respond_to do |format|
       if form.valid?
-        @school = UpdateSchool.call(@school, form.attributes)
+        @school = UpdateSchool.call(@school, form.attributes).school
         format.html { redirect_to schools_path, notice: 'School was successfully updated.' }
         format.json { render json: MultiJson.dump(SchoolPresenter.single(@school)), status: :ok }
       else

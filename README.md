@@ -36,6 +36,11 @@ rails db:setup
 rails s
 ```
 
+## Run Tests
+```sh
+bundle exec rspec spec
+```
+
 ## To Do List
 - Add pagination to the listing page and API
 - Integrate devise-jwt for API authentication

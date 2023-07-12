@@ -5,8 +5,6 @@ module Students
     before_action :authorized_student!
     before_action :load_course
     before_action :load_batch
-    before_action :set_enrollment, only: %i[new create]
-    before_action :load_enrollment, only: %i[destroy update_status]
 
     def index
       @enrollments = @batch.enrollments.includes(:user).all
@@ -35,37 +33,6 @@ module Students
       end
     end
 
-    def create
-      EnrollStudents.call(@batch, enrollment_params, status: Enrollment::APPROVED)
-      respond_to do |format|
-        message = 'Students were successfully enrolled.'
-        format.html { redirect_to my_school_course_batch_enrollments_path, notice: message }
-        format.json { render json: { message: message }, status: :created }
-      end
-    end
-
-    def destroy
-      @enrollment.destroy
-
-      respond_to do |format|
-        format.html do
-          redirect_to my_school_course_batch_enrollments_path, notice: 'Enrollment was successfully destroyed.'
-        end
-        format.json { head :no_content }
-      end
-    end
-
-    def update_status
-      @enrollment.update!(status: params[:status])
-
-      respond_to do |format|
-        format.html do
-          redirect_to my_school_course_batch_enrollments_path, notice: 'Enrollment was successfully destroyed.'
-        end
-        format.json { head :no_content }
-      end
-    end
-
     private
 
     def load_course
@@ -74,10 +41,6 @@ module Students
 
     def load_batch
       @batch = @course.batches.find_by(id: params[:batch_id])
-    end
-
-    def set_enrollment
-      @enrollment = Enrollment.new
     end
 
     def authorized_student!
