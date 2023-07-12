@@ -44,9 +44,8 @@ bundle exec rspec spec
 ## To Do List
 - Add pagination to the listing page and API
 - Integrate devise-jwt for API authentication
-- Write test cases
 - Improve directory structure
-- Integrate parallet testing for performance
+- Integrate parallel testing for performance
 - Integrate devise invitable and letter opener web gem for mails
 - Add breadcrumbs to the pages
 
